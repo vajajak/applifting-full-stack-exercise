@@ -1,0 +1,45 @@
+# NodeJS
+node_modules/
+
+# NextJS
+.next/
+
+# IDEs
+.idea/
+
+# dotenv
+.env
+.env.local
+
+# graphql/relay
+schema.graphql
+/src/types/graphql.ts
+/src/schema/graphql.schema.json
+__generated__/
+
+fixtures/
+
+.vercel
+frontend/public/.DS_Store
+frontend/public/images/.DS_Store
+frontend/public/images/backgrounds/.DS_Store
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+**/.history/**
+**/.vscode/**
+
+fe/.history
