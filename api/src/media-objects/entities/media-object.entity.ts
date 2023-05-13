@@ -13,17 +13,14 @@ registerEnumType(MediaObjectType, { name: 'MediaObjectType' });
 
 @Entity()
 export class MediaObject {
-  /* ID souboru */
   @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
   id!: number;
 
-  /* Typ souboru */
   @ApiProperty()
   @Column({ type: 'enum', enum: MediaObjectType, default: MediaObjectType['file'] })
   type!: MediaObjectType;
 
-  /* Cesta k souboru */
   @ApiProperty()
   @Column()
   path!: string;

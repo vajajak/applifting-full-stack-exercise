@@ -7,11 +7,11 @@ import { MediaObjectDTO } from './dto/media-object.dto';
 import { UpdateMediaObjectInput } from './dto/update-media-object.input';
 import { MediaObject } from './entities/media-object.entity';
 import { MediaObjectRepository } from './media-object.repository';
-import { MediaObjectsResolver } from './media-objects.resolver';
 import { MediaObjectsService } from './media-objects.service';
+import { MediaObjectController } from './media-object.controller';
 
 @Module({
-  providers: [MediaObjectRepository, MediaObjectsService, MediaObjectsResolver],
+  providers: [MediaObjectsService, MediaObjectRepository],
   imports: [
     TypeOrmModule.forFeature([MediaObject]),
     NestjsQueryGraphQLModule.forFeature({
@@ -22,10 +22,15 @@ import { MediaObjectsService } from './media-objects.service';
           DTOClass: MediaObjectDTO,
           CreateDTOClass: CreateMediaObjectInput,
           UpdateDTOClass: UpdateMediaObjectInput,
+          create: { disabled: true },
+          update: { disabled: true },
+          delete: { disabled: true },
+          read: { disabled: true },
         },
       ],
     }),
   ],
   exports: [MediaObjectsService],
+  controllers: [MediaObjectController],
 })
 export class MediaObjectModule {}

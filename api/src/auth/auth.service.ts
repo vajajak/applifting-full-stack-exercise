@@ -25,6 +25,7 @@ export class AuthService {
      * Recaptcha verification
      */
 
+    // TODO: Enable
     // try {
     //   await this.recaptchaService.verify(recaptchaToken, ip);
     // } catch (error) {
@@ -66,12 +67,13 @@ export class AuthService {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...result } = await this.usersService.findOne({
       where: { id: payload.sub, email: payload.username },
+      relations: { avatar: true },
     });
 
     if (!result) {
       throw new NotFoundException({ message: 'User not found' });
     }
 
-    return result;
+    return { ...result, avatar: result.avatar?.path || null };
   }
 }

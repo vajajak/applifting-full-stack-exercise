@@ -43,3 +43,5 @@ frontend/public/images/backgrounds/.DS_Store
 **/.vscode/**
 
 fe/.history
+api/assets/*
+!api/assets/.gitkeep

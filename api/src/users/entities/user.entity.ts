@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { hashSync } from 'bcryptjs';
 import { Transform } from 'class-transformer';
-import { MediaObject } from 'src/media-objects/entities/media-object.entity';
+import { MediaObject } from '../../media-objects/entities/media-object.entity';
 import {
   Column,
   CreateDateColumn,
@@ -36,12 +36,12 @@ export class User {
   password: string;
 
   @ApiProperty()
-  @Column({ nullable: true, name: 'avatar_id' })
-  avatarId!: string;
-  @ApiProperty()
-  @ManyToOne(() => MediaObject, (MediaObject) => MediaObject.id, { nullable: true })
+  @ManyToOne(() => MediaObject, (MediaObject) => MediaObject.id, {
+    nullable: true,
+    cascade: ['insert', 'update'],
+  })
   @JoinColumn({ name: 'avatar_id' })
-  avatar!: User;
+  avatar?: MediaObject;
 
   @ApiProperty()
   @CreateDateColumn({ name: 'created_at', type: 'datetime' })

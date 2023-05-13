@@ -4,12 +4,13 @@ import { UsersModule } from './users/users.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import yn from 'yn';
+import { ArticleModule } from './article/article.module';
 import { AuthModule } from './auth/auth.module';
 import { MediaObjectModule } from './media-objects/media-objects.module';
 import { RecaptchaModule } from './recaptcha/recaptcha.module';
-import { ArticleModule } from './article/article.module';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment,@typescript-eslint/no-var-requires
 const path = require('path');
 
@@ -31,9 +32,7 @@ const path = require('path');
       // Entities
       entities: [__dirname + '/../**/*.entity.{js,ts}'],
       // Subscribers
-      subscribers: [
-        //
-      ],
+      subscribers: [],
       // synchronize: false,
       synchronize: true,
     }),
@@ -51,13 +50,13 @@ const path = require('path');
     UsersModule,
     MediaObjectModule,
     ArticleModule,
+    ServeStaticModule.forRoot({
+      rootPath: path.join(__dirname, '..', '../assets'),
+      serveRoot: '/assets/',
+      exclude: ['/api*'],
+    }),
   ],
-  // Controllers
   controllers: [],
-  // Providers/Services
-  providers: [
-    // Subscribers
-    // UserSubscriber,
-  ],
+  providers: [],
 })
 export class AppModule {}

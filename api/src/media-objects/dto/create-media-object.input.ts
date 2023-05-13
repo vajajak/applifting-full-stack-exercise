@@ -6,7 +6,7 @@ import { MediaObjectType } from '../enums/media-object-type';
 export class CreateMediaObjectInput {
   @IsNotEmpty()
   @IsEnum(MediaObjectType)
-  @Field(() => MediaObjectType, { defaultValue: MediaObjectType.file })
+  @Field(() => MediaObjectType, { defaultValue: MediaObjectType.image })
   type!: MediaObjectType;
 
   @IsNotEmpty()

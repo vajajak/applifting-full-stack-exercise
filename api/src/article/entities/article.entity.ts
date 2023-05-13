@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { User } from 'src/users/entities/user.entity';
+import { MediaObject } from '../../media-objects/entities/media-object.entity';
 import {
   Column,
   CreateDateColumn,
@@ -9,6 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
 
 @Entity()
 export class Article {
@@ -36,6 +37,14 @@ export class Article {
   @ManyToOne(() => User, (user) => user.id, { nullable: false })
   @JoinColumn({ name: 'user_id' })
   user!: User;
+
+  @ApiProperty()
+  @Column({ nullable: true, name: 'featured_image_id' })
+  featuredImageId?: string;
+  @ApiProperty()
+  @ManyToOne(() => MediaObject, (mediaObject) => mediaObject.id, { nullable: true })
+  @JoinColumn({ name: 'featured_image_id' })
+  featuredImage?: MediaObject;
 
   @CreateDateColumn({
     name: 'created_at',
