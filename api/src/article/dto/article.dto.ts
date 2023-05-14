@@ -15,10 +15,12 @@ import { MediaObjectDTO } from 'src/media-objects/dto/media-object.dto';
 import { UserDTO } from 'src/users/dto/user.dto';
 import { Article } from '../entities/article.entity';
 import { CommentDTO } from 'src/comments/dto/comment.dto';
+import slugify from 'slugify';
 
 @ObjectType('Article')
 @BeforeCreateOne((input: CreateOneInputType<Article>, context) => {
   input.input.userId = context.req.user.id;
+  input.input.slug = slugify(input.input.title, { lower: true, strict: true, locale: 'cs' });
   return input;
 })
 @Authorize({
@@ -51,6 +53,9 @@ export class ArticleDTO {
 
   @FilterableField(() => String)
   title!: string;
+
+  @FilterableField(() => String)
+  slug!: string;
 
   @FilterableField(() => String)
   perex!: string;

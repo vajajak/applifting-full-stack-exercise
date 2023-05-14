@@ -25,6 +25,10 @@ export class Article {
   title!: string;
 
   @ApiProperty()
+  @Column()
+  slug!: string;
+
+  @ApiProperty()
   @Column({ type: 'text' })
   perex!: string;
 
