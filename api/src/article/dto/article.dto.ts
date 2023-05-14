@@ -4,6 +4,7 @@ import {
   BeforeCreateOne,
   CreateOneInputType,
   FilterableField,
+  FilterableUnPagedRelation,
   IDField,
   KeySet,
   PagingStrategies,
@@ -13,6 +14,7 @@ import {
 import { MediaObjectDTO } from 'src/media-objects/dto/media-object.dto';
 import { UserDTO } from 'src/users/dto/user.dto';
 import { Article } from '../entities/article.entity';
+import { CommentDTO } from 'src/comments/dto/comment.dto';
 
 @ObjectType('Article')
 @BeforeCreateOne((input: CreateOneInputType<Article>, context) => {
@@ -36,6 +38,10 @@ import { Article } from '../entities/article.entity';
 @Relation('user', () => UserDTO, { nullable: false, disableRemove: true, disableUpdate: true })
 @Relation('featuredImage', () => MediaObjectDTO, {
   nullable: true,
+  disableRemove: true,
+  disableUpdate: true,
+})
+@FilterableUnPagedRelation('comments', () => CommentDTO, {
   disableRemove: true,
   disableUpdate: true,
 })

@@ -11,6 +11,7 @@ import { ArticleModule } from './article/article.module';
 import { AuthModule } from './auth/auth.module';
 import { MediaObjectModule } from './media-objects/media-objects.module';
 import { RecaptchaModule } from './recaptcha/recaptcha.module';
+import { CommentsModule } from './comments/comments.module';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment,@typescript-eslint/no-var-requires
 const path = require('path');
 
@@ -43,6 +44,7 @@ const path = require('path');
       playground: yn(process.env.GRAPHQL_PLAYGROUND),
       autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
       cors: { credentials: true, origin: process.env.FE_BASE_URL },
+      installSubscriptionHandlers: true,
     }),
     // App modules
     RecaptchaModule,
@@ -55,6 +57,7 @@ const path = require('path');
       serveRoot: '/assets/',
       exclude: ['/api*'],
     }),
+    CommentsModule,
   ],
   controllers: [],
   providers: [],

@@ -6,10 +6,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
+import { Comment } from '../../comments/entities/comment.entity';
 
 @Entity()
 export class Article {
@@ -45,6 +47,12 @@ export class Article {
   @ManyToOne(() => MediaObject, (mediaObject) => mediaObject.id, { nullable: true })
   @JoinColumn({ name: 'featured_image_id' })
   featuredImage?: MediaObject;
+
+  @ApiProperty()
+  @OneToMany(() => Comment, (comment) => comment.article, {
+    nullable: false,
+  })
+  comments!: [Comment];
 
   @CreateDateColumn({
     name: 'created_at',
