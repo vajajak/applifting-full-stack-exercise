@@ -1,4 +1,4 @@
-import { ID, ObjectType } from '@nestjs/graphql';
+import { ID, ObjectType, registerEnumType } from '@nestjs/graphql';
 import {
   BeforeCreateOne,
   CreateOneInputType,
@@ -12,6 +12,9 @@ import {
 import { ArticleDTO } from 'src/article/dto/article.dto';
 import { UserDTO } from 'src/users/dto/user.dto';
 import { Comment } from '../entities/comment.entity';
+import { VoteType } from 'src/votes/enums/vote-type.enum';
+
+registerEnumType(VoteType, { name: 'VoteType' });
 
 @ObjectType('Comment')
 @BeforeCreateOne((input: CreateOneInputType<Comment>, context) => {
@@ -40,6 +43,15 @@ export class CommentDTO {
 
   @FilterableField(() => String)
   articleId!: string;
+
+  @FilterableField(() => Number)
+  upVotes!: number;
+
+  @FilterableField(() => Number)
+  downVotes!: number;
+
+  @FilterableField(() => VoteType, { nullable: true })
+  voted?: VoteType;
 
   @FilterableField(() => Date)
   createdAt!: Date;
