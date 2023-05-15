@@ -24,10 +24,7 @@ export class AuthController {
       secure: true,
     });
 
-    return res.json({
-      accessToken: accessToken,
-      user,
-    });
+    return res.json(user);
   }
 
   @UseGuards(JWTAuthGuard)
