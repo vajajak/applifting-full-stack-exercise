@@ -8,7 +8,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { randomUUID } from 'crypto';
 import { diskStorage } from 'multer';
 import { JWTAuthGuard } from 'src/auth/guards/jwt-auth.guard';
@@ -39,11 +39,27 @@ export class MediaObjectController {
     })
   )
   @Post('upload')
+  @ApiOperation({
+    summary: 'Upload an asset to media object',
+    description: `To upload an asset to media object, send a FormData encoded body with a parameter of "asset". This has to be an image format.`,
+  })
+  @ApiParam({ name: 'file' })
+  @ApiResponse({
+    status: 200,
+    description: 'The asset has been successfuly uploaded to media object.',
+  })
+  @ApiResponse({
+    status: 401,
+    description:
+      'Unauthorized. You have to be logged-in and send a valid JWT token to upload data to media object.',
+  })
+  @ApiResponse({
+    status: 400,
+    description:
+      'The provided file format is invalid. Uploaded asset has to be a valid image format.',
+  })
   async uploadFile(@Res() response, @UploadedFile() file: Express.Multer.File) {
-    console.log(file);
     const result = await this.mediaObjectService.createOne(file.path);
-    console.log(result);
     response.json(result);
-    // return JSON.stringify(result);
   }
 }
