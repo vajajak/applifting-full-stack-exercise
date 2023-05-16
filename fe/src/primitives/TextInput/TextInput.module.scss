@@ -1,0 +1,14 @@
+.input {
+    @apply w-full border border-lighterGrey rounded-xl px-2.5 py-4 outline-none text-black text-base;
+
+    &::placeholder {
+        @apply text-lighterGrey;
+    }
+    &__disabled {
+        @apply bg-lighterGrey pointer-events-none;
+    }
+}
+
+.error {
+    @apply w-full text-red text-sm mt-1;
+}

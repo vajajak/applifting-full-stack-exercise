@@ -6,11 +6,17 @@ export const mainMenu = [
         title: trans('navigation.recent_articles'),
         url: '/',
     },
-    {
-        id: 2,
-        title: trans('navigation.about'),
-        url: '/about',
-    },
 ];
 
-export const userMenu = [{ title: trans('navigation.auth.log_in'), url: '/login' }];
+export const userMenu = [
+    {
+        id: 1,
+        title: trans('navigation.my-articles'),
+        url: '/my-articles',
+    },
+    {
+        id: 2,
+        title: trans('navigation.create-article'),
+        url: '/create-article',
+    },
+];

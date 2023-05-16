@@ -33,4 +33,58 @@
     .avatar {
         @apply h-8 w-8 object-cover rounded-full;
     }
+
+    .noImage {
+        @apply h-8 w-8 bg-darkGrey rounded-full text-white font-semibold uppercase flex place-content-center place-items-center;
+    }
+}
+
+.loggedIn {
+    @apply relative;
+}
+
+.userInfo {
+    @apply flex gap-3 cursor-pointer;
+
+    .caret {
+        &.open {
+            @apply rotate-180;
+        }
+    }
+}
+
+.userMenu {
+    @apply absolute bg-lightGrey shadow-xl invisible top-12 right-0 rounded-lg px-6 py-2 cursor-default w-max;
+
+    &.open {
+        @apply visible;
+    }
+
+    .logOut {
+        @apply text-red mt-2 block;
+
+        &:hover {
+            @apply opacity-50 text-right;
+        }
+    }
+
+    .userName {
+        @apply border-b-2 border-grey pb-2 text-lighterGrey;
+    }
+
+    .menuItem {
+        @apply block pt-2 text-darkGrey;
+
+        &:hover {
+            @apply text-blue;
+        }
+
+        &.active {
+            @apply text-blue;
+        }
+    }
+
+    .menuItems {
+        @apply pt-2;
+    }
 }

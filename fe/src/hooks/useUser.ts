@@ -1,10 +1,8 @@
 import { swrConfig } from '@/utils/swrConfig';
-import useSWR from 'swr';
-
-interface UserProps {
-    redirectTo?: string | boolean;
-    redirectIfFound?: boolean;
-}
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useMemo } from 'react';
+import useSWR, { useSWRConfig } from 'swr';
 
 interface UserData {
     id: string;
@@ -17,20 +15,23 @@ interface UserData {
         path: string;
         height: number;
         width: number;
+        blurhash: string;
     } | null;
 }
 
-export default function useUser({ redirectTo = false, redirectIfFound = false }: UserProps = {}) {
+export default function useUser() {
     const { data: user, isLoading, mutate: mutateUser } = useSWR<UserData>('/auth/user', swrConfig);
-    // const { push } = useRouter();
-    // const _axios = useMemo(
-    //     () =>
-    //         axios.create({
-    //             headers: { 'Content-Type': 'multipart/form-data' },
-    //             withCredentials: true,
-    //         }),
-    //     [],
-    // );
+    const { mutate } = useSWRConfig();
+    const router = useRouter();
+    const _axios = useMemo(
+        () =>
+            axios.create({
+                baseURL: process.env.NEXT_PUBLIC_BE_BASE_URL,
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true,
+            }),
+        [],
+    );
 
     // useEffect(() => {
     //     // if no redirect needed, just return (example: already on /dashboard)
@@ -42,28 +43,26 @@ export default function useUser({ redirectTo = false, redirectIfFound = false }:
     //         // If redirectIfFound is also set, redirect if the user was found
     //         (redirectIfFound && user?.isLoggedIn)
     //     ) {
-    //         Router.push(redirectTo?.toString());
+    //         push(redirectTo?.toString());
     //     }
     // }, [user, redirectIfFound, redirectTo]);
 
-    // const logout = useCallback(async (afterLogoutPage) => {
-    //     await _axios.get('/api/user/logout');
-    //     await push(afterLogoutPage).then(() => mutateUser());
-    // }, []);
+    const logout = useCallback(async () => {
+        await _axios.get('/auth/logout');
+        router.push('/');
+        mutate('/auth/user', undefined);
+    }, []);
 
-    // const login = useCallback(async (formData: FormData, afterLoginPage) => {
-    //     const { data } = await _axios.post('/api/user/login', formData, {
-    //         headers: { 'Content-Type': 'multipart/form-data' },
-    //         withCredentials: true,
-    //     });
+    const login = useCallback(async (formData: Record<string, string>) => {
+        const { data } = await _axios.post('/auth/login', formData);
 
-    //     if (data.success) {
-    //         await mutateUser();
-    //         push(afterLoginPage);
-    //     }
+        if (data.id) {
+            await mutateUser();
+            router.push('/my-articles');
+        }
 
-    //     return data;
-    // }, []);
+        return data;
+    }, []);
 
-    return { user, isLoading, mutateUser /* nullifyNotifications, login, logout */ };
+    return { user, isLoading, mutateUser, logout, login };
 }

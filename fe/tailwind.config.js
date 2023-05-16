@@ -22,7 +22,9 @@ module.exports = {
                 lighterGrey: '#6C757D',
                 lightGrey: '#F8F9FA',
                 darkGrey: '#212529',
+                grey: '#DFDFDF',
                 blue: '#007BFF',
+                red: '#E2021D',
             },
             gridColumnEnd: {
                 13: '13',

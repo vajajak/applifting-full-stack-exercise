@@ -1,0 +1,9 @@
+.label {
+    @apply font-normal text-base mb-2 block;
+    &__required {
+        &::after {
+            content: '*';
+            @apply text-red ml-1;
+        }
+    }
+}

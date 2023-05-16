@@ -1,0 +1,36 @@
+.wrapper {
+    @apply w-full px-4 pt-16 pb-40 max-w-306 m-auto;
+    @apply tablet:px-20;
+
+    h1 {
+        @apply text-14 font-medium pb-15;
+    }
+}
+
+.formContainer {
+    @apply p-8 max-w-sm shadow-2xl m-auto;
+
+    h2 {
+        @apply text-xl font-medium mb-4;
+    }
+
+    .textInput {
+        @apply mb-4;
+
+        input {
+            @apply w-full static px-3 py-2 rounded-md border-grey;
+        }
+    }
+}
+
+.submitButton {
+    @apply bg-blue text-white px-3 py-2 rounded flex ml-auto;
+
+    &:disabled {
+        @apply bg-lighterGrey cursor-default;
+    }
+}
+
+.errorMessage {
+    @apply bg-red rounded-md text-white p-2 mb-2;
+}
