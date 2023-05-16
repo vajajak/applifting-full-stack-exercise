@@ -9,6 +9,7 @@ import { ReactElement, useCallback, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import styles from './LoginForm.module.scss';
+import { Button } from '@/primitives/Button/button';
 
 interface FormData {
     email: string;
@@ -97,9 +98,9 @@ export const LoginForm = (): ReactElement<null, 'div'> | null => {
                         placeholder={trans('login_page.password_placeholder')}
                         label={trans('login_page.password_label')}
                     />
-                    <button disabled={loading} type="submit" className={styles.submitButton}>
+                    <Button submit disabled={loading}>
                         {trans('login_page.submit_button_label')}
-                    </button>
+                    </Button>
                 </form>
             </div>
         </div>

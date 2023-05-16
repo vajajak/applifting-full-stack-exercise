@@ -54,7 +54,7 @@
 }
 
 .userMenu {
-    @apply absolute bg-lightGrey shadow-xl invisible top-12 right-0 rounded-lg px-6 py-2 cursor-default w-max;
+    @apply absolute bg-lightGrey shadow-xl invisible top-12 right-0 rounded-lg px-6 py-2 cursor-default w-max z-9999;
 
     &.open {
         @apply visible;

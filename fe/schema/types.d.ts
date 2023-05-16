@@ -27,6 +27,7 @@ export type Article = {
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
   user: User;
+  userId: Scalars['ID'];
 };
 
 
@@ -56,6 +57,7 @@ export type ArticleDeleteResponse = {
   slug?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+  userId?: Maybe<Scalars['ID']>;
 };
 
 export type ArticleFilter = {
@@ -70,6 +72,7 @@ export type ArticleFilter = {
   slug?: InputMaybe<StringFieldComparison>;
   title?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
+  userId?: InputMaybe<IdFilterComparison>;
 };
 
 export type ArticleFilterCommentFilter = {
@@ -98,7 +101,8 @@ export enum ArticleSortFields {
   Perex = 'perex',
   Slug = 'slug',
   Title = 'title',
-  UpdatedAt = 'updatedAt'
+  UpdatedAt = 'updatedAt',
+  UserId = 'userId'
 }
 
 export type Comment = {
@@ -149,6 +153,7 @@ export type CommentFilterArticleFilter = {
   slug?: InputMaybe<StringFieldComparison>;
   title?: InputMaybe<StringFieldComparison>;
   updatedAt?: InputMaybe<DateFieldComparison>;
+  userId?: InputMaybe<IdFilterComparison>;
 };
 
 export type CommentSort = {
@@ -436,6 +441,7 @@ export type UpdateArticle = {
   slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
   updatedAt?: InputMaybe<Scalars['DateTime']>;
+  userId?: InputMaybe<Scalars['ID']>;
 };
 
 export type UpdateOneArticleInput = {

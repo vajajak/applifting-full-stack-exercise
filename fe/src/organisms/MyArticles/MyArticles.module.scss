@@ -1,0 +1,17 @@
+.wrapper {
+    @apply w-full px-4 pt-16 pb-40 max-w-306 m-auto;
+    @apply tablet:px-20;
+
+    h1 {
+        @apply text-14 font-medium;
+    }
+}
+
+.header {
+    @apply flex gap-x-8 gap-y-2 flex-wrap mb-10;
+}
+
+.newButton {
+    @apply h-fit m-0 self-center;
+    margin: 0 !important;
+}

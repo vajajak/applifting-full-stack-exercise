@@ -1,0 +1,8 @@
+.wrapper {
+    @apply w-full px-4 pt-16 pb-40 max-w-306 m-auto;
+    @apply tablet:px-20;
+
+    h1 {
+        @apply text-14 font-medium pb-15;
+    }
+}

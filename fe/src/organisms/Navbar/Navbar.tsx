@@ -78,7 +78,12 @@ export const Navbar = (): ReactElement<null, 'div'> | null => {
                                     )}
                                 </div>
                             </div>
-                            <div className={clsx(styles.userMenu, menuOpen && styles.open)}>
+                            <div
+                                className={clsx(styles.userMenu, menuOpen && styles.open)}
+                                onClick={() => {
+                                    setMenuOpen(false);
+                                }}
+                            >
                                 <div className={styles.userName}>
                                     {user.firstName} {user.lastName}
                                 </div>

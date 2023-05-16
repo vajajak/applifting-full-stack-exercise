@@ -1,0 +1,7 @@
+.button {
+    @apply bg-blue text-white px-3 py-2 rounded flex ml-auto;
+
+    &:disabled {
+        @apply bg-lighterGrey cursor-default;
+    }
+}

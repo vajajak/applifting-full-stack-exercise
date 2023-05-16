@@ -3,7 +3,7 @@
     @apply tablet:px-20;
 
     h1 {
-        @apply text-14 font-medium pb-15;
+        @apply text-14 font-medium pb-15 text-darkGrey;
     }
 }
 
@@ -11,23 +11,15 @@
     @apply p-8 max-w-sm shadow-2xl m-auto;
 
     h2 {
-        @apply text-xl font-medium mb-4;
+        @apply text-xl font-medium mb-4 text-darkGrey;
     }
 
     .textInput {
-        @apply mb-4;
+        @apply mb-4 text-darkGrey;
 
         input {
             @apply w-full static px-3 py-2 rounded-md border-grey;
         }
-    }
-}
-
-.submitButton {
-    @apply bg-blue text-white px-3 py-2 rounded flex ml-auto;
-
-    &:disabled {
-        @apply bg-lighterGrey cursor-default;
     }
 }
 

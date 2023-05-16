@@ -13,7 +13,7 @@ import { fetchQuery } from 'relay-runtime';
 import styles from './ArticleList.module.scss';
 
 export const ArticleList = (): ReactElement<null, 'div'> | null => {
-    const environment = useMemo(() => createRelayEnvironment({}), []);
+    const environment = useMemo(() => createRelayEnvironment({}, false), []);
 
     const [page, setPage] = useState(0);
     const [articles, setArticles] = useState<articleListQuery$data['articles']['nodes'] | undefined>(undefined);
@@ -50,45 +50,45 @@ export const ArticleList = (): ReactElement<null, 'div'> | null => {
                     const authorName = `${article.user.firstName} ${article.user.lastName}`;
 
                     return (
-                        <div key={article.id} className={styles.articleItem}>
-                            {imagePath && (
-                                <Image
-                                    className={styles.coverImage}
-                                    src={imagePath}
-                                    width={article.featuredImage?.width}
-                                    height={article.featuredImage?.height}
-                                    placeholder="blur"
-                                    blurDataURL={article.featuredImage?.blurhash}
-                                    sizes="(max-width: 768px) 100vw, 33vw"
-                                    alt=""
-                                />
-                            )}
-                            <div>
-                                <h2>{article.title}</h2>
-                                <p className={styles.metadata}>
-                                    <span>{authorName}</span>
-                                    <span>
-                                        {new Date(article.updatedAt).toLocaleDateString('en-US', {
-                                            day: 'numeric',
-                                            month: 'numeric',
-                                            year: '2-digit',
-                                        })}
-                                    </span>
-                                </p>
-                                <p className={styles.perex}>{article.perex}</p>
-                                <p className={styles.controls}>
-                                    <Link className={styles.link} href={{ pathname: 'articles' }}>
-                                        {trans('article.read_whole_article')}
-                                    </Link>
-                                    <span>
-                                        {trans('article.comment_count').replace(
-                                            '{count}',
-                                            String(article.commentCount),
-                                        )}
-                                    </span>
-                                </p>
+                        <Link className={styles.link} href={`/articles/${article.slug}`}>
+                            <div key={article.id} className={styles.articleItem}>
+                                {imagePath && (
+                                    <Image
+                                        className={styles.coverImage}
+                                        src={imagePath}
+                                        width={article.featuredImage?.width}
+                                        height={article.featuredImage?.height}
+                                        placeholder="blur"
+                                        blurDataURL={article.featuredImage?.blurhash}
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        alt=""
+                                    />
+                                )}
+                                <div>
+                                    <h2>{article.title}</h2>
+                                    <p className={styles.metadata}>
+                                        <span>{authorName}</span>
+                                        <span>
+                                            {new Date(article.updatedAt).toLocaleDateString('en-US', {
+                                                day: 'numeric',
+                                                month: 'numeric',
+                                                year: '2-digit',
+                                            })}
+                                        </span>
+                                    </p>
+                                    <p className={styles.perex}>{article.perex}</p>
+                                    <p className={styles.controls}>
+                                        <span className={styles.link}>{trans('article.read_whole_article')}</span>
+                                        <span>
+                                            {trans('article.comment_count').replace(
+                                                '{count}',
+                                                String(article.commentCount),
+                                            )}
+                                        </span>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     );
                 })}
             </div>

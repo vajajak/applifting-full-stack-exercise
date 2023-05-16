@@ -24,6 +24,8 @@ const data: Record<string, Record<string, string>> = {
         'login_page.validations.email_invalid': 'E-mail is not valid!',
         'login_page.validations.auth.wrong_user': 'The entered user does not exists!',
         'login_page.validations.auth.wrong_password': 'The entered password is not correct!',
+        'my_articles.title': 'My articles',
+        'my_articles.button.create_new_article': 'Create new article',
     },
 };
 

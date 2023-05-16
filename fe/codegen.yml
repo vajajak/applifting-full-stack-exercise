@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-    - ${API_ENDPOINT_GRAPHQL}
+    - ${API_ENDPOINT_GRAPHQL_CODEGEN}
 generates:
   # GraphQL
   ./schema/schema.graphql:

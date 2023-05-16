@@ -16,6 +16,20 @@ export const ArticleListQuery = graphql`
     }
 `;
 
+/**
+ * Detail query
+ */
+export const ArticleDetailQuery = graphql`
+    query articleDetailQuery($slug: String!) {
+        articles(filter: { slug: { eq: $slug } }) {
+            totalCount
+            nodes {
+                ...articleFragment @relay(mask: false)
+            }
+        }
+    }
+`;
+
 // --------------------------------------------- Fragments ----------------------------------------------- \\
 
 graphql`

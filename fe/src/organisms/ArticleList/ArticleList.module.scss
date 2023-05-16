@@ -3,7 +3,7 @@
     @apply tablet:px-20;
 
     h1 {
-        @apply text-14 font-medium pb-15;
+        @apply text-14 font-medium pb-15 text-darkGrey;
     }
 }
 
@@ -15,7 +15,7 @@
         @apply tablet:flex-row;
 
         h2 {
-            @apply text-xl font-medium mb-4;
+            @apply text-xl font-medium mb-4 text-darkGrey;
         }
 
         &:hover {
@@ -26,7 +26,7 @@
     }
 
     .perex {
-        @apply font-normal text-base overflow-hidden whitespace-pre-wrap mb-5;
+        @apply font-normal text-base text-darkGrey overflow-hidden whitespace-pre-wrap mb-5;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 4; /* start showing ellipsis when 3rd line is reached */
@@ -60,7 +60,7 @@
 }
 
 .pagination {
-    @apply mt-6;
+    @apply mt-6 text-darkGrey;
 
     .loadMore {
         @apply text-blue inline-block ml-6;
