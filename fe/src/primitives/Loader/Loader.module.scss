@@ -1,0 +1,12 @@
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    @apply w-8 h-8;
+    animation: spin 1s linear infinite;
+    top: calc(50% - 0.75rem);
+    left: calc(50% - 0.75rem);
+}

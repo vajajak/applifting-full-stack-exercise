@@ -25,6 +25,15 @@ export class MediaObjectDTO {
   path!: string;
 
   @FilterableField()
+  height!: number;
+
+  @FilterableField()
+  width!: number;
+
+  @FilterableField()
+  blurhash!: string;
+
+  @FilterableField()
   createdAt!: Date;
 
   @FilterableField({ nullable: true })

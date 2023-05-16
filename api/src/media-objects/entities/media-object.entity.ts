@@ -25,6 +25,18 @@ export class MediaObject {
   @Column()
   path!: string;
 
+  @ApiProperty()
+  @Column()
+  height!: number;
+
+  @ApiProperty()
+  @Column()
+  width!: number;
+
+  @ApiProperty()
+  @Column({ type: 'text' })
+  blurhash!: string;
+
   @CreateDateColumn({
     name: 'created_at',
   })

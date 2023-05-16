@@ -27,11 +27,24 @@ services:
       - mysql
     depends_on:
       - mysql
+  nextjs-fe:
+    image: applifting_full_stack_exercise_fe
+    volumes:
+      - ./fe:/usr/src/app
+      - /usr/src/app/node_modules
+    build:
+      context: fe
+      dockerfile: Dockerfile
+      target: development
+    env_file:
+      - .env
+    ports:
+      - "3001:3001"
+    networks:
+      - mysql
+    depends_on:
+      - nestjs-api
 
 networks:
   mysql:
     driver: bridge
-
-# volumes:
-#   nestjs-api:
-#     external: false

@@ -74,6 +74,17 @@ export class AuthService {
       throw new NotFoundException({ message: 'User not found' });
     }
 
-    return { ...result, avatar: result.avatar?.path || null };
+    return {
+      ...result,
+      ...(result.avatar
+        ? {
+            avatar: {
+              path: result.avatar.path,
+              height: result.avatar.height,
+              width: result.avatar.width,
+            },
+          }
+        : { avatar: null }),
+    };
   }
 }

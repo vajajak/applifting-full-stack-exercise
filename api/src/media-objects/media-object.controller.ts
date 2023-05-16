@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import {
   BadRequestException,
   Controller,
   Post,
+  Res,
   UploadedFile,
   UseGuards,
   UseInterceptors,
-  Res,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -13,6 +14,8 @@ import { randomUUID } from 'crypto';
 import { diskStorage } from 'multer';
 import { JWTAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { MediaObjectsService } from './media-objects.service';
+const sizeOf = require('image-size');
+const sharp = require('sharp');
 
 @ApiTags('Media Object')
 @Controller('media-object')
@@ -59,7 +62,17 @@ export class MediaObjectController {
       'The provided file format is invalid. Uploaded asset has to be a valid image format.',
   })
   async uploadFile(@Res() response, @UploadedFile() file: Express.Multer.File) {
-    const result = await this.mediaObjectService.createOne(file.path);
-    response.json(result);
+    sizeOf(file.path, async (err, dimensions) => {
+      const blurhash = (
+        await sharp(file.path).raw().ensureAlpha().resize(32, 32, { fit: 'inside' }).toBuffer()
+      ).toString('base64');
+      const result = await this.mediaObjectService.createOne({
+        path: file.path,
+        width: dimensions.width,
+        height: dimensions.height,
+        blurhash: `data:image/png;base64,${blurhash}`,
+      });
+      response.json(result);
+    });
   }
 }

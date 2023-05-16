@@ -1,0 +1,36 @@
+.wrapper {
+    @apply w-full bg-lightGrey h-14 backdrop-blur-md flex justify-start px-4 items-center;
+    @apply tablet:px-20;
+}
+
+.logo {
+    @apply w-[39px] h-[44px];
+}
+
+.menuItems {
+    @apply flex gap-10 ml-10;
+
+    .menuItem {
+        @apply text-lighterGrey;
+
+        &.active {
+            @apply text-darkGrey;
+        }
+    }
+}
+
+.userNavigation {
+    @apply ml-auto;
+
+    .logIn {
+        @apply text-blue;
+    }
+
+    .rightArrow {
+        @apply inline-block align-middle ml-2;
+    }
+
+    .avatar {
+        @apply h-8 w-8 object-cover rounded-full;
+    }
+}

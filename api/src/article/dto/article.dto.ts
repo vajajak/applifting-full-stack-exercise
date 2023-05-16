@@ -63,6 +63,9 @@ export class ArticleDTO {
   @FilterableField(() => String)
   content!: string;
 
+  @FilterableField(() => Number, { nullable: false, defaultValue: 0 })
+  commentCount!: number;
+
   userId!: string;
 
   @FilterableField(() => Date)

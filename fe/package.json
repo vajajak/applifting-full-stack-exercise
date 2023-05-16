@@ -1,0 +1,55 @@
+{
+    "name": "applifting-full-stack-exercise",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev -p 3001",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "graphql-codegen": "env-cmd -f ../.env graphql-codegen --config codegen.yml",
+        "relay": "relay-compiler"
+    },
+    "dependencies": {
+        "@types/node": "20.1.4",
+        "@types/react": "18.2.6",
+        "@types/react-dom": "18.2.4",
+        "autoprefixer": "10.4.14",
+        "axios": "^1.4.0",
+        "clsx": "^1.2.1",
+        "dayjs": "^1.11.7",
+        "eslint": "8.40.0",
+        "eslint-config-next": "13.4.2",
+        "graphql": "^15.7.2",
+        "graphql-tag": "^2.12.6",
+        "next": "13.4.2",
+        "postcss": "8.4.23",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-relay": "^14.1.0",
+        "relay-runtime": "^14.1.0",
+        "sass": "^1.62.1",
+        "swr": "^2.1.5",
+        "tailwindcss": "3.3.2",
+        "typescript": "5.0.4"
+    },
+    "prettier": {
+        "semi": true,
+        "trailingComma": "all",
+        "printWidth": 120,
+        "tabWidth": 4,
+        "singleQuote": true
+    },
+    "devDependencies": {
+        "@graphql-codegen/cli": "^3.3.1",
+        "@graphql-codegen/introspection": "^3.0.1",
+        "@graphql-codegen/schema-ast": "^3.0.1",
+        "@graphql-codegen/typescript": "^3.0.4",
+        "@types/react-relay": "^14.1.2",
+        "@types/relay-runtime": "^14.1.4",
+        "env-cmd": "^10.1.0",
+        "relay-compiler": "^14.1.0",
+        "relay-compiler-language-typescript": "^14.1.0",
+        "relay-config": "^12.0.0"
+    }
+}

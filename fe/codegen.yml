@@ -1,0 +1,18 @@
+overwrite: true
+schema:
+    - ${API_ENDPOINT_GRAPHQL}
+generates:
+  # GraphQL
+  ./schema/schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      namingConvention:
+        typeNames: pascal-case#pascalCase
+        enumValues: keep
+        transformUnderscore: false
+      skipTypename: false
+  # Typescript
+  ./schema/types.d.ts:
+    plugins:
+      - "typescript"
