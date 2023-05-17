@@ -60,7 +60,7 @@ export const Navbar = (): ReactElement<null, 'div'> | null => {
                                     width={8}
                                     height={4}
                                 />
-                                <div className={styles.avatarContainer}>
+                                <div>
                                     {user.avatar && imagePath ? (
                                         <Image
                                             src={imagePath}

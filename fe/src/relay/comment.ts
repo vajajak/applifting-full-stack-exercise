@@ -1,5 +1,18 @@
 import { graphql } from 'react-relay';
 
+// ------------------------------------------ Queries -------------------------------------- \\
+
+/**
+ * List query
+ */
+export const CommentListQuery = graphql`
+    query commentListQuery($sorting: [CommentSort!], $filter: CommentFilter) {
+        comments(sorting: $sorting, filter: $filter) {
+            ...commentFragment @relay(mask: false)
+        }
+    }
+`;
+
 // --------------------------------------------- Fragments ----------------------------------------------- \\
 
 graphql`

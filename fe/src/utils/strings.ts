@@ -38,6 +38,10 @@ const data: Record<string, Record<string, string>> = {
         'create_article.validations.image.type': 'Only JPG/JPEG and PNG are supported image formats!',
         'create_article.featuredImage.remove': 'Remove/Replace image',
         'update_article.title': 'Edit article',
+        'article_detail.related_articles.title': 'Related articles',
+        'article_detail.comments.title': 'Comments ({count})',
+        'article_detail.comments.no_comments_yet': 'No comments yet...',
+        'article_detail.comments.reply': 'Reply',
     },
 };
 

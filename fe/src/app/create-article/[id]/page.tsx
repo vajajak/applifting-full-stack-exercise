@@ -1,9 +1,7 @@
 import { CreateUpdateArticle } from '@/organisms/CreateUpdateArticle/CreateUpdateArticle';
-import articleEditQueryNode, {
-    articleEditQuery,
-    articleEditQuery$data,
-} from '@/relay/__generated__/articleEditQuery.graphql';
+import articleEditQueryNode, { articleEditQuery } from '@/relay/__generated__/articleEditQuery.graphql';
 import loadSerializableQuery from '@/utils/loadSerializableQuery';
+import { notFound } from 'next/navigation';
 
 export default async function UpdateDetailPage({ params }: { params: { id: string } }) {
     const preloadedQuery = await loadSerializableQuery<typeof articleEditQueryNode, articleEditQuery>(
@@ -12,6 +10,10 @@ export default async function UpdateDetailPage({ params }: { params: { id: strin
             id: params.id,
         },
     );
+
+    if (!preloadedQuery.response.article.id) {
+        notFound();
+    }
 
     return <CreateUpdateArticle initialData={preloadedQuery.response.article} />;
 }

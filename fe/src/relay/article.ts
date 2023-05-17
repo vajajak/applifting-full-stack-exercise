@@ -61,9 +61,6 @@ graphql`
             ...mediaObjectFragment @relay(mask: false)
         }
         commentCount
-        comments {
-            ...commentFragment @relay(mask: false)
-        }
         updatedAt
     }
 `;

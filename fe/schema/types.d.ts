@@ -119,16 +119,6 @@ export type Comment = {
   voted?: Maybe<VoteType>;
 };
 
-export type CommentConnection = {
-  __typename?: 'CommentConnection';
-  /** Array of nodes. */
-  nodes: Array<Comment>;
-  /** Paging information */
-  pageInfo: OffsetPageInfo;
-  /** Fetch total count of records */
-  totalCount: Scalars['Int'];
-};
-
 export type CommentFilter = {
   and?: InputMaybe<Array<CommentFilter>>;
   article?: InputMaybe<CommentFilterArticleFilter>;
@@ -365,7 +355,7 @@ export type Query = {
   article: Article;
   articles: ArticleConnection;
   comment: Comment;
-  comments: CommentConnection;
+  comments: Array<Comment>;
 };
 
 
@@ -388,7 +378,6 @@ export type QueryCommentArgs = {
 
 export type QueryCommentsArgs = {
   filter?: InputMaybe<CommentFilter>;
-  paging?: InputMaybe<OffsetPaging>;
   sorting?: InputMaybe<Array<CommentSort>>;
 };
 
@@ -431,24 +420,18 @@ export type SubscriptionCreatedCommentArgs = {
   input?: InputMaybe<CreateCommentSubscriptionFilterInput>;
 };
 
-export type UpdateArticle = {
-  commentCount?: InputMaybe<Scalars['Float']>;
+export type UpdateArticleInput = {
   content?: InputMaybe<Scalars['String']>;
-  createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** An unique UUID of an article */
-  id?: InputMaybe<Scalars['ID']>;
+  featuredImageId?: InputMaybe<Scalars['ID']>;
   perex?: InputMaybe<Scalars['String']>;
-  slug?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
-  updatedAt?: InputMaybe<Scalars['DateTime']>;
-  userId?: InputMaybe<Scalars['ID']>;
 };
 
 export type UpdateOneArticleInput = {
   /** The id of the record to update */
   id: Scalars['ID'];
   /** The update to apply. */
-  update: UpdateArticle;
+  update: UpdateArticleInput;
 };
 
 export type User = {

@@ -24,7 +24,7 @@ registerEnumType(VoteType, { name: 'VoteType' });
 @KeySet(['id'])
 @QueryOptions({
   enableTotalCount: true,
-  pagingStrategy: PagingStrategies.OFFSET,
+  pagingStrategy: PagingStrategies.NONE,
   maxResultsSize: -1,
 })
 @Relation('user', () => UserDTO, { nullable: false, disableRemove: true, disableUpdate: true })

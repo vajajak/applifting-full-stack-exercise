@@ -98,11 +98,12 @@ module.exports = {
             },
             fontSize: {
                 sm: ['15px', '22.5px'],
+                p: '1.25rem',
                 '3xl': ['2rem', '2.6rem'],
                 xl: ['1.5rem', '1.75rem'],
                 xxs: ['0.875rem', '1.25rem'],
                 xxxs: ['0.813rem', '1.138rem'],
-                xxxxs: ['0.688rem', '0.963rem'],
+                xxxxs: ['0.875rem', '1.25rem'],
                 xl: ['1.25rem', '1.625rem'],
                 15: '0.9375rem',
                 14: ['0.875rem', '1.3125rem'],
@@ -111,6 +112,7 @@ module.exports = {
             },
             lineHeight: {
                 1.5: '1.5',
+                8.5: '2.125rem',
                 11: '3rem',
             },
             translate: {
