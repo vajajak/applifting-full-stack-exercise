@@ -30,6 +30,21 @@ export const ArticleDetailQuery = graphql`
     }
 `;
 
+export const ArticleEditQuery = graphql`
+    query articleEditQuery($id: ID!) {
+        article(id: $id) {
+            id
+            title
+            perex
+            content
+            featuredImage {
+                id
+                path
+            }
+        }
+    }
+`;
+
 // --------------------------------------------- Fragments ----------------------------------------------- \\
 
 graphql`
@@ -66,6 +81,14 @@ export const ArticleDeleteMutation = graphql`
 export const ArticleCreateMutation = graphql`
     mutation articleCreateMutation($input: CreateOneArticleInput!) {
         createOneArticle(input: $input) {
+            id
+        }
+    }
+`;
+
+export const ArticleUpdateMutation = graphql`
+    mutation articleUpdateMutation($input: UpdateOneArticleInput!) {
+        updateOneArticle(input: $input) {
             id
         }
     }

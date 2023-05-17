@@ -9,7 +9,7 @@ export const Button = ({
     onClick,
 }: {
     submit?: boolean;
-    children: string;
+    children: string | JSX.Element;
     disabled?: boolean;
     className?: string;
     onClick?: () => void;

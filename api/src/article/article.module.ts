@@ -10,6 +10,7 @@ import { ArticleDTO } from './dto/article.dto';
 import { CreateArticleInput } from './dto/create-article.input';
 import { Article } from './entities/article.entity';
 import { ArticleResolver } from './article.resolver';
+import { UpdateArticleInput } from './dto/update-article.input';
 
 @Module({
   providers: [ArticleRepository, ArticleService, ArticleResolver],
@@ -23,6 +24,7 @@ import { ArticleResolver } from './article.resolver';
           EntityClass: Article,
           DTOClass: ArticleDTO,
           CreateDTOClass: CreateArticleInput,
+          UpdateDTOClass: UpdateArticleInput,
           create: { guards: [JWTAuthGuard], many: { disabled: true } },
           update: { guards: [JWTAuthGuard], many: { disabled: true } },
           delete: { guards: [JWTAuthGuard], many: { disabled: true } },

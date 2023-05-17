@@ -37,6 +37,7 @@ const data: Record<string, Record<string, string>> = {
         'create_article.featuredImage.label': 'Featured image',
         'create_article.validations.image.type': 'Only JPG/JPEG and PNG are supported image formats!',
         'create_article.featuredImage.remove': 'Remove/Replace image',
+        'update_article.title': 'Edit article',
     },
 };
 
