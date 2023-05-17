@@ -25,7 +25,7 @@ export class Comment {
   @Column({ nullable: true, name: 'parent_id' })
   parentId?: string;
   @ApiProperty()
-  @ManyToOne(() => Comment, (comment) => comment.id, { nullable: true })
+  @ManyToOne(() => Comment, (comment) => comment.id, { nullable: true, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'parent_id' })
   parent?: Comment;
 
@@ -33,7 +33,7 @@ export class Comment {
   @Column({ nullable: false, name: 'user_id' })
   userId!: string;
   @ApiProperty()
-  @ManyToOne(() => User, (user) => user.id, { nullable: false })
+  @ManyToOne(() => User, (user) => user.id, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user!: User;
 
@@ -41,7 +41,7 @@ export class Comment {
   @Column({ nullable: false, name: 'article_id' })
   articleId!: string;
   @ApiProperty()
-  @ManyToOne(() => Article, (article) => article.id, { nullable: false })
+  @ManyToOne(() => Article, (article) => article.id, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'article_id' })
   article!: Article;
 

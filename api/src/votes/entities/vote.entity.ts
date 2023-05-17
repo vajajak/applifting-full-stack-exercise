@@ -28,7 +28,7 @@ export class Vote {
   @Column({ nullable: false, name: 'comment_id' })
   commentId!: string;
   @ApiProperty()
-  @ManyToOne(() => Comment, (comment) => comment.id, { nullable: false })
+  @ManyToOne(() => Comment, (comment) => comment.id, { nullable: false, onDelete: 'CASCADE' })
   @JoinColumn({ name: 'comment_id' })
   comment!: Comment;
 

@@ -6,13 +6,20 @@ export const Button = ({
     children,
     disabled,
     className,
+    onClick,
 }: {
     submit?: boolean;
     children: string;
     disabled?: boolean;
     className?: string;
+    onClick?: () => void;
 }) => (
-    <button disabled={!!disabled} className={clsx(styles.button, className)} {...(submit && { type: 'submit' })}>
+    <button
+        disabled={!!disabled}
+        className={clsx(styles.button, className)}
+        {...(submit && { type: 'submit' })}
+        {...(onClick && { onClick })}
+    >
         {children}
     </button>
 );

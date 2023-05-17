@@ -52,3 +52,13 @@ graphql`
         updatedAt
     }
 `;
+
+// --------------------------------------------- Mutations ----------------------------------------------- \\
+
+export const ArticleDeleteMutation = graphql`
+    mutation articleDeleteMutation($id: ID!) {
+        deleteOneArticle(input: { id: $id }) {
+            id
+        }
+    }
+`;
