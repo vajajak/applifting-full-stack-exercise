@@ -8,6 +8,7 @@ import { createRelayEnvironment } from '@/utils/createRelayEnvironment';
 import trans from '@/utils/strings';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import {
     DataGrid,
     GridActionsCellItem,
@@ -146,6 +147,14 @@ export const MyArticles = (): ReactElement<null, 'div'> | null => {
                     showInMenu
                     onClick={() => {
                         router.push(`/create-article/${params.id}`);
+                    }}
+                />,
+                <GridActionsCellItem
+                    icon={<VisibilityIcon />}
+                    label="View"
+                    showInMenu
+                    onClick={() => {
+                        router.push(`/articles/${articles?.find((a) => a.id === params.id)?.slug}`);
                     }}
                 />,
             ],
