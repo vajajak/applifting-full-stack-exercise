@@ -62,3 +62,11 @@ export const ArticleDeleteMutation = graphql`
         }
     }
 `;
+
+export const ArticleCreateMutation = graphql`
+    mutation articleCreateMutation($input: CreateOneArticleInput!) {
+        createOneArticle(input: $input) {
+            id
+        }
+    }
+`;

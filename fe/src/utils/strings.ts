@@ -26,6 +26,17 @@ const data: Record<string, Record<string, string>> = {
         'login_page.validations.auth.wrong_password': 'The entered password is not correct!',
         'my_articles.title': 'My articles',
         'my_articles.button.create_new_article': 'Create new article',
+        'create_article.title': 'Create new article',
+        'create_article.publish_button.label': 'Publish article',
+        'create_article.article_title.label': 'Article Title',
+        'create_article.article_title.placeholder': 'My First Article',
+        'create_article.perex.title': 'Perex',
+        'create_article.perex.placeholder': 'A short summary of your article...',
+        'create_article.content.title': 'Content',
+        'create_article.content.placeholder': 'Supports markdown. Yay!',
+        'create_article.featuredImage.label': 'Featured image',
+        'create_article.validations.image.type': 'Only JPG/JPEG and PNG are supported image formats!',
+        'create_article.featuredImage.remove': 'Remove/Replace image',
     },
 };
 

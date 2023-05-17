@@ -1,0 +1,38 @@
+.wrapper {
+    @apply block mb-4;
+}
+
+.file {
+    @apply w-28 overflow-hidden;
+    &::file-selector-button {
+        @apply bg-blue text-white px-3 py-1 rounded border-0 cursor-pointer;
+    }
+
+    &.preview {
+        @apply hidden;
+    }
+}
+
+.error {
+    @apply w-full text-red text-sm mt-1;
+}
+
+.previewContainer {
+    @apply relative;
+
+    .previewImage {
+        @apply h-28 object-cover;
+    }
+
+    .loader {
+        @apply h-8 mt-4;
+    }
+}
+
+.removeImage {
+    @apply block text-red cursor-pointer mt-2;
+
+    &:hover {
+        @apply opacity-70;
+    }
+}

@@ -46,7 +46,7 @@ export default function useUser({ redirectTo = false }: UserProps = {}) {
 
     const logout = useCallback(async () => {
         await _axios.get('/auth/logout');
-        router.push('/');
+        router.push('/login');
         mutate('/auth/user', undefined);
     }, []);
 
