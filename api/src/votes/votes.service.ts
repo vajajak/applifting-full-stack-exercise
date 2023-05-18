@@ -18,12 +18,12 @@ export class VotesService {
     ipAddress: string
   ): Promise<{ success: boolean; message?: string }> {
     const userVote = await this.userVote(commentId, ipAddress);
-    if (userVote.voteType === voteType) {
+    if (userVote?.voteType === voteType) {
       return { success: false, message: 'user_already_voted' };
     }
 
     try {
-      if (userVote.voteType) {
+      if (userVote?.voteType) {
         const res = await this.voteRepository.update(userVote.id, { voteType });
 
         if (res.affected) {

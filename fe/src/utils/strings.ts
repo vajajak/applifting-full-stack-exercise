@@ -42,6 +42,10 @@ const data: Record<string, Record<string, string>> = {
         'article_detail.comments.title': 'Comments ({count})',
         'article_detail.comments.no_comments_yet': 'No comments yet...',
         'article_detail.comments.reply': 'Reply',
+        'article_detail.comments.placeholder': 'Join the discussion',
+        'article_detail.comments.placeholder_log_in': 'Log in to comment',
+        'article_detail.comments.submit': 'Comment',
+        'article_detail.comments.replying': 'Replying to {name} - click to remove',
     },
 };
 

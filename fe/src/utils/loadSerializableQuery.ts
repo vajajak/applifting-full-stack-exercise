@@ -1,4 +1,4 @@
-import { GraphQLResponse, OperationType, RequestParameters, VariablesOf } from 'relay-runtime';
+import { OperationType, RequestParameters, VariablesOf } from 'relay-runtime';
 import { ConcreteRequest } from 'relay-runtime/lib/util/RelayConcreteNode';
 import { networkFetch } from './createServerRelayEnvironment';
 

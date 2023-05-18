@@ -63,15 +63,47 @@
             @apply text-darkGrey text-2xl leading-7 font-medium;
         }
 
-        .comment {
-            @apply flex gap-x-7;
+        .commentInput {
+            @apply grow flex gap-2 relative;
 
-            .avatar {
-                @apply h-11 w-11 object-cover rounded-full shrink-0;
+            div {
+                @apply grow;
+            }
+
+            .submitButton {
+                @apply m-0 h-fit py-2 px-4;
+            }
+
+            input {
+                @apply rounded-md border-grey px-4 py-2;
+
+                &::placeholder {
+                    @apply text-lighterGrey text-xl;
+                }
+            }
+
+            .replyTo {
+                @apply absolute bg-white -top-4 rounded-e-md px-4 text-darkGrey cursor-pointer select-none;
+            }
+        }
+
+        .comment {
+            @apply flex gap-x-7 w-full;
+
+            &.nested {
+                @apply ml-16;
+            }
+
+            .avatarContainer {
+                @apply shrink-0;
+
+                .avatar {
+                    @apply h-11 w-11 object-cover rounded-full;
+                }
             }
 
             .noImage {
-                @apply h-11 w-11 bg-darkGrey rounded-full text-white font-semibold uppercase flex place-content-center place-items-center shrink-0;
+                @apply h-11 w-11 bg-lighterGrey rounded-full text-white font-semibold uppercase flex place-content-center place-items-center shrink-0;
             }
 
             .commentContent {
@@ -94,6 +126,11 @@
 
                     > * {
                         @apply border-r-2 border-grey mr-2 pr-2;
+
+                        &.disabled {
+                            @apply cursor-default opacity-50;
+                            @apply hover:opacity-100;
+                        }
                     }
 
                     span:nth-last-child(1) {

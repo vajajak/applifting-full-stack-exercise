@@ -134,6 +134,7 @@ export const MyArticles = (): ReactElement<null, 'div'> | null => {
             disableColumnMenu: true,
             getActions: (params: GridRowParams) => [
                 <GridActionsCellItem
+                    key={1}
                     icon={<DeleteIcon />}
                     label="Delete"
                     showInMenu
@@ -142,6 +143,7 @@ export const MyArticles = (): ReactElement<null, 'div'> | null => {
                     }}
                 />,
                 <GridActionsCellItem
+                    key={2}
                     icon={<EditIcon />}
                     label="Edit"
                     showInMenu
@@ -150,6 +152,7 @@ export const MyArticles = (): ReactElement<null, 'div'> | null => {
                     }}
                 />,
                 <GridActionsCellItem
+                    key={3}
                     icon={<VisibilityIcon />}
                     label="View"
                     showInMenu

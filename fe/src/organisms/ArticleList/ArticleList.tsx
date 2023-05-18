@@ -50,7 +50,7 @@ export const ArticleList = (): ReactElement<null, 'div'> | null => {
                     const authorName = `${article.user.firstName} ${article.user.lastName}`;
 
                     return (
-                        <Link className={styles.link} href={`/articles/${article.slug}`}>
+                        <Link className={styles.link} href={`/articles/${article.slug}`} key={article.id}>
                             <div key={article.id} className={styles.articleItem}>
                                 {imagePath && (
                                     <Image

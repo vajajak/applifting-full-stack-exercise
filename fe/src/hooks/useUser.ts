@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 
-interface UserData {
+export interface UserData {
     id: string;
     firstName: string;
     lastName: string;

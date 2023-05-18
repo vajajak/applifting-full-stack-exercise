@@ -47,3 +47,23 @@ graphql`
         createdAt
     }
 `;
+
+// --------------------------------------------- Subscriptions ----------------------------------------------- \\
+
+export const CommentCreateSubscription = graphql`
+    subscription commentCreateSubscription($articleId: String!) {
+        createdComment(input: { filter: { articleId: { eq: $articleId } } }) {
+            ...commentFragment @relay(mask: false)
+        }
+    }
+`;
+
+// --------------------------------------------- Mutations ----------------------------------------------- \\
+
+export const CommentCreateMutation = graphql`
+    mutation commentCreateMutation($input: CreateOneCommentInput!) {
+        createOneComment(input: $input) {
+            ...commentFragment @relay(mask: false)
+        }
+    }
+`;

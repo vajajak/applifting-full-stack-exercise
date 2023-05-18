@@ -80,6 +80,7 @@ export const CreateUpdateArticle = ({ initialData }: CreateUpdateArticleProps): 
 
             commitMutation<articleCreateMutation | articleUpdateMutation>(environment, {
                 mutation: initialData ? ArticleUpdateMutation : ArticleCreateMutation,
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                 // @ts-ignore
                 variables: {
                     ...(initialData && {
