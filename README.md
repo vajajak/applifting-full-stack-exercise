@@ -1,5 +1,5 @@
 # Applifting Full-Stack Exercise
-### By Vitezslav Spirik
+#### By Vitezslav Spirik
 
 This is a proposed solution of [Applifting fullstack exercise](https://github.com/Applifting/fullstack-exercise/blob/master/assignment.md#enroll-beta).
 
@@ -74,6 +74,6 @@ docker-compose -f docker-compose.production.yml up -V --build
 
 Tested on Node 18
 
-## Contact
+## Contact
 
 - If you've run into difficulties running the containers or if you have questions regarding the solution, don't hesitate to contact me at [spirik@vajsoft.com](mailto:spirik@vajsoft.com).
