@@ -1,5 +1,5 @@
 # Applifting Full-Stack Exercise
-#### By Vitezslav Spirik
+### By Vitezslav Spirik
 
 This is a proposed solution of [Applifting fullstack exercise](https://github.com/Applifting/fullstack-exercise/blob/master/assignment.md#enroll-beta).
 
