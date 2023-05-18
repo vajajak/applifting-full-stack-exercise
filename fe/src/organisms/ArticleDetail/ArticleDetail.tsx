@@ -62,7 +62,7 @@ const Comment = ({
     nested?: boolean;
 }) => {
     const imagePath = getAssetPath(comment.user.avatar?.path);
-    const commenterName = `${article.user.firstName} ${article.user.lastName}`;
+    const commenterName = `${comment.user.firstName} ${comment.user.lastName}`;
     const voteCount = `${comment.upVotes - comment.downVotes >= 0 ? '+' : ''}${comment.upVotes - comment.downVotes}`;
 
     return (
