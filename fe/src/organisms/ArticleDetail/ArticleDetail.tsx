@@ -8,18 +8,20 @@ import { VoteType, articleListQuery } from '@/relay/__generated__/articleListQue
 import { commentCreateMutation } from '@/relay/__generated__/commentCreateMutation.graphql';
 import { commentListQuery, commentListQuery$data } from '@/relay/__generated__/commentListQuery.graphql';
 import { voteSetMutation } from '@/relay/__generated__/voteSetMutation.graphql';
-import { CommentCreateMutation, CommentListQuery } from '@/relay/comment';
+import { CommentCreateMutation, CommentCreateSubscription, CommentListQuery } from '@/relay/comment';
 import { VoteSetMutation } from '@/relay/vote';
 import { createRelayEnvironment } from '@/utils/createRelayEnvironment';
 import { getAssetPath } from '@/utils/getAssetPath';
 import trans from '@/utils/strings';
 import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
+import _ from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Dispatch, ReactElement, SetStateAction, useCallback, useEffect, useMemo, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import { requestSubscription } from 'react-relay';
 import { commitMutation, fetchQuery } from 'relay-runtime';
 import * as yup from 'yup';
 import styles from './ArticleDetail.module.scss';
@@ -169,7 +171,7 @@ export const ArticleDetail = ({
     const avatarImagePath = useMemo(() => getAssetPath(user?.avatar?.path), [user]);
     const [replyTo, setReplyTo] = useState<commentListQuery$data['comments'][0] | undefined>(undefined);
 
-    const { register, handleSubmit, watch } = useForm<FormData>({
+    const { register, handleSubmit, watch, reset } = useForm<FormData>({
         defaultValues: {
             content: '',
         },
@@ -198,12 +200,25 @@ export const ArticleDetail = ({
             .map((c) => ({
                 ...c,
                 parent: null,
-                children: comments.filter((co) => co.parent?.id === c.id),
+                children: comments.filter((co) => co.parent?.id === c.id).reverse(),
             }))
             .sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
             .reverse();
         setSortedComments(res);
     }, [comments]);
+
+    useEffect(() => {
+        requestSubscription(environment, {
+            subscription: CommentCreateSubscription,
+            variables: { articleId: article.id },
+            onNext: (data) => {
+                const { createdComment } = data as { createdComment: commentListQuery$data['comments'][0] };
+                const newComments = comments ? [..._.cloneDeep(comments)] : [];
+                newComments?.push(createdComment);
+                setComments(newComments.filter((e, i, a) => a.findLastIndex((c) => c.id === e.id) === i));
+            },
+        });
+    }, [comments, article.id]);
 
     const onSubmit: SubmitHandler<FormData> = useCallback(
         async (values) => {
@@ -217,21 +232,14 @@ export const ArticleDetail = ({
                 onCompleted(data) {
                     if (data.createOneComment.id) {
                         setCommentLoading(false);
+                        setReplyTo(undefined);
+                        reset();
                     }
                 },
             });
         },
         [replyTo],
     );
-
-    // console.log(sortedComments);
-
-    // const subscribed = useSubscription({
-    //     subscription: CommentCreateSubscription,
-    //     variables: { articleId: article.id },
-    // });
-
-    // console.log(subscribed);
 
     const setVote = useCallback(
         (commentId: string, voteType: VoteType) => {
@@ -243,7 +251,7 @@ export const ArticleDetail = ({
                     onCompleted(data) {
                         if (data.setVote.success) {
                             const comment = comments?.find((c) => c.id === commentId);
-                            const newComments = comments ? Array.from(comments) : [];
+                            const newComments = comments ? [..._.cloneDeep(comments)] : [];
                             if (voteType === 'up' && comment) {
                                 newComments.push({
                                     ...comment,
