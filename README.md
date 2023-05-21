@@ -1,7 +1,7 @@
 # Applifting Full-Stack Exercise
 #### By Vitezslav Spirik
 
-This is a proposed solution of [Applifting fullstack exercise](https://github.com/Applifting/fullstack-exercise/blob/master/assignment.md#enroll-beta).
+This is my implementation of [Applifting fullstack exercise](https://github.com/Applifting/fullstack-exercise/blob/master/assignment.md#enroll-beta).
 
 ## Getting Started
 
@@ -30,7 +30,7 @@ npm run graphql-codegen
 npm run relay
 ```
 
-You can then end the Docker container and start it up again via
+You can then terminate the Docker container and start it up again via
 
 ```bash
 docker-compose down
