@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   mysql:
     image: mysql
@@ -27,6 +27,17 @@ services:
       - mysql
     depends_on:
       - mysql
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl http://host.docker.internal:3000/health -f || exit 1"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 0s
+
   nextjs-fe:
     image: applifting_full_stack_exercise_fe
     volumes:
@@ -34,6 +45,8 @@ services:
       - /usr/src/app/node_modules
     build:
       context: fe
+      args:
+        - API_ENDPOINT_GRAPHQL_CODEGEN=${API_ENDPOINT_GRAPHQL_CODEGEN}
       dockerfile: Dockerfile
       target: development
     env_file:
@@ -43,7 +56,8 @@ services:
     networks:
       - mysql
     depends_on:
-      - nestjs-api
+      nestjs-api:
+        condition: service_healthy
 
 networks:
   mysql:

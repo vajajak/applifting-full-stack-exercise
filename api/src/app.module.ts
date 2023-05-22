@@ -13,6 +13,7 @@ import { MediaObjectModule } from './media-objects/media-objects.module';
 import { RecaptchaModule } from './recaptcha/recaptcha.module';
 import { CommentsModule } from './comments/comments.module';
 import { VotesModule } from './votes/votes.module';
+import { HealthModule } from './health/health.module';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment,@typescript-eslint/no-var-requires
 const path = require('path');
 
@@ -60,6 +61,7 @@ const path = require('path');
     }),
     CommentsModule,
     VotesModule,
+    HealthModule,
   ],
   controllers: [],
   providers: [],

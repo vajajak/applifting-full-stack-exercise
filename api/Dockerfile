@@ -5,6 +5,8 @@
 # Base image
 FROM node:18-alpine As development
 
+RUN apk update && apk add curl rm -rf /var/cache/apk/*
+
 # Create app directory
 WORKDIR /usr/src/app
 
