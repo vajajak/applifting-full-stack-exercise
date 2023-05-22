@@ -11,18 +11,18 @@ This is my implementation of [Applifting fullstack exercise](https://github.com/
   
 - Similarly you can download the assets to populate the page with meaningful images (user avatars & article featured pages). Download them [from here](https://drive.google.com/file/d/1LHcYY3cjA277vuonAnDKjbqb-lLkL1HH/view?usp=sharing). Place the content of this zip into ```/api/assets/```.
 
-Before first running the project, you will need to generate the schema. Due to the nature of Docker builds, this can't be easily automated. First run:
+To get started in development, run:
 
 ```bash
 docker-compose up -V --build
 ```
 
-The docker compose file consists of 3 services:
+This should build and start all 3 services in development environment:
 - Database (MySQL)
 - API (Nest.js)
 - Front-end (Next.js)
 
-Once the Database and API services are up, we can fetch the GraphQL schema and generate Relay typings by doing:
+This should also fetch the GraphQL schema and generate Relay typings. If this is not the case, you can always do it manually:
 
 ```bash
 cd fe
@@ -30,12 +30,8 @@ npm run graphql-codegen
 npm run relay
 ```
 
-You can then terminate the Docker container and start it up again via
+> Please note that dev mode has some issues with Next.js 13 and new App directory, refer below to section *Known issues & imperfections*.
 
-```bash
-docker-compose down
-docker-compose up -V --build
-```
 Now, you have a fully functional development environment, to run the services again, all you have to do is:
 
 ```bash
@@ -44,7 +40,7 @@ docker-compose up
 
 To run the project in the production stage, you can simply run:
 ```bash
-docker-compose -f docker-compose.production.yml up -V --build
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -V --build
 ```
 
 ## Ports and URLs
@@ -56,7 +52,7 @@ docker-compose -f docker-compose.production.yml up -V --build
 
 ## Users & passwords
 
-- You can use the following testing accounts to log into and test the system.
+- If you are using the dummy database, you can use the following testing accounts to log into and test the system.
   
 | **Name**         | **Username**           | **Password**  |
 |------------------|------------------------|---------------|
