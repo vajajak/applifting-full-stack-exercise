@@ -5,7 +5,7 @@ This is my implementation of [Applifting fullstack exercise](https://github.com/
 
 ## Getting Started
 
-- First of all, download the [.ENV file](https://drive.google.com/file/d/1EtWzqzfru_pIWiZiVZpbVHPOfSq85pW4/view?usp=share_link) and place it at the project root to get all the necessary environment variables both for API and FE.
+- First of all, download the [.ENV file](https://drive.google.com/file/d/1mtqyjw9o4LX1hYRiBqwxlQ_xkBf_YTqV/view) and place it at the project root to get all the necessary environment variables both for API and FE.
 
 - To get started quickly with pre-populated data, use the testing database dump. You can download it [from here](https://drive.google.com/file/d/1MToqCB6JRFVsNh2lTIC45A5_DLMkUdyB/view?usp=sharing).
   
