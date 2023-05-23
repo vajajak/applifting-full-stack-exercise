@@ -345,7 +345,7 @@ export const ArticleDetail = ({
                                             placeholder={
                                                 !user
                                                     ? trans('article_detail.comments.placeholder_log_in')
-                                                    : trans('create_article.article_title.placeholder')
+                                                    : trans('article_detail.comments.placeholder')
                                             }
                                             type="text"
                                             disabled={!user}
