@@ -208,7 +208,7 @@ export const ArticleDetail = ({
     }, [comments]);
 
     useEffect(() => {
-        requestSubscription(environment, {
+        const subscription = requestSubscription(environment, {
             subscription: CommentCreateSubscription,
             variables: { articleId: article.id },
             onNext: (data) => {
@@ -218,6 +218,10 @@ export const ArticleDetail = ({
                 setComments(newComments.filter((e, i, a) => a.findLastIndex((c) => c.id === e.id) === i));
             },
         });
+
+        return () => {
+            subscription.dispose();
+        };
     }, [comments, article.id]);
 
     const onSubmit: SubmitHandler<FormData> = useCallback(
