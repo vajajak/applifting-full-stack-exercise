@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  nestjs-api:
+    volumes:
+      - /usr/src/app
+    build:
+      context: api
+      dockerfile: Dockerfile
+      target: build
+  nextjs-fe:
+    volumes:
+      - /usr/src/app
+    build:
+      context: fe
+      dockerfile: Dockerfile
+      target: build

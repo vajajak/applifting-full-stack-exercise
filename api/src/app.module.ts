@@ -47,6 +47,7 @@ const path = require('path');
       autoSchemaFile: path.join(process.cwd(), 'src/schema.gql'),
       cors: { credentials: true, origin: process.env.FE_BASE_URL },
       installSubscriptionHandlers: true,
+      introspection: true,
     }),
     // App modules
     RecaptchaModule,

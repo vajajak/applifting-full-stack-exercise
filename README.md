@@ -22,14 +22,6 @@ This should build and start all 3 services in development environment:
 - API (Nest.js)
 - Front-end (Next.js)
 
-This should also fetch the GraphQL schema and generate Relay typings. If this is not the case, you can always do it manually:
-
-```bash
-cd fe
-npm run graphql-codegen
-npm run relay
-```
-
 > Please note that dev mode has some issues with Next.js 13 and new App directory, refer below to section *Known issues & imperfections*.
 
 Now, you have a fully functional development environment, to run the services again, all you have to do is:

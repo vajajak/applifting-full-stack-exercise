@@ -29,6 +29,8 @@ CMD ["npm", "run", "start:dev"]
 
 FROM node:18-alpine As build
 
+RUN apk update && apk add curl rm -rf /var/cache/apk/*
+
 WORKDIR /usr/src/app
 
 COPY --chown=node:node package*.json ./
@@ -43,17 +45,10 @@ ENV NODE_ENV production
 # Run the build command which creates the production bundle
 RUN npm run build
 
-USER node
-
-###################
-# PRODUCTION
-###################
-
-FROM node:18-alpine As production
-
 # Copy the bundled code from the build stage to the production image
-COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
-COPY --chown=node:node --from=build /usr/src/app/dist ./dist
+COPY --chown=node:node . .
+
+USER node
 
 # Start the server using the production build
 CMD ["npm", "run", "start:prod"]
