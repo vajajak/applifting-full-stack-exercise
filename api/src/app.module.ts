@@ -4,7 +4,7 @@ import { UsersModule } from './users/users.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ServeStaticModule } from '@nestjs/serve-static';
+// import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import yn from 'yn';
 import { ArticleModule } from './article/article.module';
@@ -14,6 +14,8 @@ import { RecaptchaModule } from './recaptcha/recaptcha.module';
 import { CommentsModule } from './comments/comments.module';
 import { VotesModule } from './votes/votes.module';
 import { HealthModule } from './health/health.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { CloudinaryProvider } from './cloudinary/cloudinary.provider';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment,@typescript-eslint/no-var-requires
 const path = require('path');
 
@@ -55,16 +57,17 @@ const path = require('path');
     UsersModule,
     MediaObjectModule,
     ArticleModule,
-    ServeStaticModule.forRoot({
-      rootPath: path.join(__dirname, '..', '../assets'),
-      serveRoot: '/assets/',
-      exclude: ['/api*'],
-    }),
+    // ServeStaticModule.forRoot({
+    //   rootPath: path.join(__dirname, '..', '../assets'),
+    //   serveRoot: '/assets/',
+    //   exclude: ['/api*'],
+    // }),
     CommentsModule,
     VotesModule,
     HealthModule,
+    CloudinaryModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [CloudinaryProvider],
 })
 export class AppModule {}

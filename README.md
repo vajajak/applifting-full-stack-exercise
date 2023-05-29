@@ -5,11 +5,12 @@ This is my implementation of [Applifting fullstack exercise](https://github.com/
 
 ## Getting Started
 
-- First of all, download the [.ENV file](https://drive.google.com/file/d/1mtqyjw9o4LX1hYRiBqwxlQ_xkBf_YTqV/view) and place it at the project root to get all the necessary environment variables both for API and FE.
+- First of all, download the [.ENV file](https://drive.google.com/file/d/1oxfO-hbwKM0eQTse37wVhPGF9AAe3Qgk/view) and place it at the project root to get all the necessary environment variables both for API and FE.
 
-- To get started quickly with pre-populated data, use the testing database dump. You can download it [from here](https://drive.google.com/file/d/1MToqCB6JRFVsNh2lTIC45A5_DLMkUdyB/view?usp=sharing).
+- To get started quickly with pre-populated data, use the testing database dump. You can download it [from here](https://drive.google.com/file/d/1X1r0j9g7kCCvEOPNF5u8VRZg6W0qmKlt/view).
   
-- Similarly you can download the assets to populate the page with meaningful images (user avatars & article featured pages). Download them [from here](https://drive.google.com/file/d/1LHcYY3cjA277vuonAnDKjbqb-lLkL1HH/view?usp=sharing). Place the content of this zip into ```/api/assets/```.
+- ~~Similarly you can download the assets to populate the page with meaningful images (user avatars & article featured pages). Download them [from here](https://drive.google.com/file/d/1LHcYY3cjA277vuonAnDKjbqb-lLkL1HH/view?usp=sharing). Place the content of this zip into ```/api/assets/```.~~
+*Assets are no longer needed, images are now uploaded in Cloudinary*
 
 To get started in development, run:
 

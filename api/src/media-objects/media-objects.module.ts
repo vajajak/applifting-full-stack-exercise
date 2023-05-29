@@ -9,6 +9,7 @@ import { MediaObject } from './entities/media-object.entity';
 import { MediaObjectRepository } from './media-object.repository';
 import { MediaObjectsService } from './media-objects.service';
 import { MediaObjectController } from './media-object.controller';
+import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 
 @Module({
   providers: [MediaObjectsService, MediaObjectRepository],
@@ -29,6 +30,7 @@ import { MediaObjectController } from './media-object.controller';
         },
       ],
     }),
+    CloudinaryModule,
   ],
   exports: [MediaObjectsService],
   controllers: [MediaObjectController],

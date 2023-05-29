@@ -5,10 +5,10 @@ const nextConfig = {
         deviceSizes: [80, 160, 320, 420, 768, 1024, 1280, 1440, 1920, 2560],
         remotePatterns: [
             {
-                protocol: 'http',
-                port: '3000',
-                hostname: 'host.docker.internal',
-                pathname: '/assets/**',
+                protocol: 'https',
+                port: '',
+                hostname: process.env.NEXT_PUBLIC_CLOUDINARY_ASSET_URL,
+                pathname: `/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/**`,
             },
         ],
     },
